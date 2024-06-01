@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ChitChat</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mainContainer">
+        <div class="loaderContainer">
+            <img class="logoImg" src="./img/logo.png" alt="logo" width="250px">
+            <div class="loader"></div>
+        </div>
+        <div id="snackbar">
+
+        </div>
+        <form class="signUpForm">
+            <fieldset>
+                <legend>SignUP</legend>
+                <div class="fstLstNameContainer">
+                    <input type="text" class="fName" name="fName" value="junaid@gmail.com" placeholder="First Name">
+                    <input type="text" class="lName" name="lName" value="junaid@gmail.com" placeholder="Last Name">
+                </div>
+                <div class="emailContainer">
+                    <input type="email" class="emailField" name="email" value="junaid@gmail.com" placeholder="Email">
+                </div>
+                <div class="passwordContainer">
+                    <input type="password" class="password-field" name="password" value="junaid@gmail.com"
+                        placeholder="Password min 6">
+                </div>
+                <div class="dateGndrContainer">
+                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="brith-date"
+                        name="DOB" placeholder="DOB" value="1/2006">
+                    <input type="text" class="gender" name="gender" value="junaid@gmail.com" placeholder="he/she">
+                </div>
+                <div class="signUpBtnContainer">
+                    <button class="signUpBtn btn">Sign Up</button>
+                </div>
+                <p class="switchPara">Have an Account, Want's to <span class="loginLink">Login</span>? </p>
+            </fieldset>
+        </form>
+        <form class="loginForm">
+            <fieldset>
+                <legend>Login</legend>
+                <div class="emailContainer">
+                    <input type="email" class="emailField" name="email" value="ali@gmail.com" placeholder="Email">
+                </div>
+                <div class="passwordContainer">
+                    <input type="password" class="password-field" value="123456" name="password" placeholder="Password">
+                </div>
+                <div class="loginBtnContainer">
+                    <button class="loginBtn btn">Login</button>
+                </div>
+                <p class="switchPara">don't Have an Account, Want's to <span class="signUpLink">SignUp</span>? </p>
+            </fieldset>
+        </form>
+        <div class="usersNavContainer">
+            <div class="navBar">
+                <h3>Chat with,</h3> <div
+                    class="openNavbtn" onclick="openNav()"></div>
+            </div>
+            <div id="mySidebar" class="sidebar">
+                <button class="closeNavbtn" onclick="closeNav()">×</button>
+                <div class="userInfoContainer">
+                    <div class="userDpContainer">
+                        <div class="userDp">
+                            <i class="fa-solid fa-camera changeDpIcon"></i>
+                            <input type="file" class="dpSelectFile" style="display: none;" accept="image/*">
+                        </div>
+                    </div>
+                </div>
+              </div>
+            <div class="usersContainer">
+            </div>
+        </div>
+        <div class="messengerContainer">
+            <div class="navBar">
+                <i class="fa-solid fa-arrow-left" id="backIcon"></i>
+                <h3 class="recieverName"></h3>
+            </div>
+            <div class="msgInbox">
+            </div>
+            <div class="msgFieldDiv">
+                <div class="fieldAndImageSelectBtnConatiner">
+                    <input type="text" class="msgField" placeholder="Start typing...">
+                    <button class="imageSelectBtn">+</button>
+                    <input type="file" class="imageInput" style="display: none;" accept="image/*">
+                </div>
+                <button class="sndBtn btn">Send </button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

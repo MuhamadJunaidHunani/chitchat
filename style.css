@@ -1,0 +1,371 @@
+@font-face {
+  font-family: "kerlo";
+  src: url("Kurale/Kurale-Regular.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mainContainer {
+  background-color: #EFEAE2;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  border: 2px solid transparent;
+  border-top: 2px solid crimson;
+  border-radius: 50%;
+  animation: loader 1s ease-out infinite;
+  margin: 20px auto;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 200px;
+  background: rgba(220, 20, 60, 0.828);
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 10px;
+  top: 30px;
+  font-size: 17px;
+  border-radius: 10px;
+  font-family: "kerlo";
+}
+
+#snackbar.show {
+  visibility: visible;
+  animation: fadein 0.5s, fadeout 0.5s 1.7s;
+}
+
+@keyframes fadein {
+  from {
+    left: -100px;
+    opacity: 0;
+  }
+
+  to {
+    left: 10px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    left: 10px;
+    opacity: 1;
+  }
+
+  to {
+    left: -100px;
+    opacity: 0;
+  }
+}
+
+.signUpForm {
+  width: 80%;
+  max-width: 800px;
+  display: none;
+}
+
+.loginForm {
+  display: none;
+  width: 80%;
+  max-width: 800px;
+}
+
+fieldset {
+  border: 3px solid crimson;
+  padding: 20px 0;
+}
+
+legend {
+  color: crimson;
+  font-size: 40px;
+  text-align: center;
+  font-weight: 700;
+}
+
+fieldset div {
+  display: flex;
+}
+
+form input {
+  border: none;
+  border-bottom: 1px solid crimson;
+  background-color: transparent;
+  outline: none;
+  color: crimson;
+  font-size: 20px;
+  margin: 20px;
+  width: 100%;
+}
+
+form input::placeholder {
+  color: rgba(220, 20, 60, 0.826);
+  font-size: 15px;
+}
+
+form input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.signUpBtnContainer,
+.loginBtnContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10PX;
+}
+
+.switchPara {
+  font-size: 15px;
+  font-weight: 700;
+  font-family: math;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.loginLink,
+.signUpLink {
+  color: crimson;
+  font-weight: 900;
+}
+
+.loginLink:hover,
+.signUpLink:hover {
+  cursor: pointer;
+  color: rgba(220, 20, 60, 0.751);
+}
+
+.usersNavContainer {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  padding: 10px;
+}
+
+.openNavbtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #EFEAE2;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 30px;
+  right: 0;
+  border-radius: 20px 0 0 20px;
+  background-color: #fffffe;
+  transition: 0.3s;
+  z-index: 1;
+}
+
+.closeNavbtn {
+  border: none;
+  padding-left: 10px;
+  background-color: transparent;
+  font-size: 40px;
+}
+
+.userDpContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+}
+
+.userDp {
+  width: 30vh;
+  height: 30vh;
+  border-radius: 50%;
+  background-image: url(./img/person.jpg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.changeDpIcon {
+  position: absolute;
+  top: 75%;
+  left: 75%;
+  font-size: 22px;
+}
+
+.changeDpIcon:hover {
+  color: rgba(0, 0, 0, 0.847);
+  cursor: pointer;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: 8vh;
+  background-color: rgb(231, 55, 90);
+  margin-bottom: 1vh;
+}
+
+.navBar h3,
+.navBar i {
+  color: #EFEAE2;
+  font-size: clamp(25px, 4vw, 40px);
+}
+
+.userToChat {
+  width: 100%;
+  height: 60px;
+  padding: 10px;
+  margin: 10px auto;
+  font-size: 32px;
+  border: 3px solid crimson;
+  position: relative;
+  overflow: hidden;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.userToChat:hover {
+  background-color: rgba(240, 236, 236, 0.753);
+  cursor: pointer;
+}
+
+.userToChat::after {
+  content: ">";
+  color: crimson;
+  position: absolute;
+  right: -20px;
+  transition: 0.3s;
+  font-weight: 900;
+
+}
+
+.userToChat:hover::after {
+  right: 10px;
+}
+
+.messengerContainer {
+  display: none;
+  height: 100vh;
+  width: 100%;
+}
+
+.msgInbox {
+  height: calc(100vh - 21vh);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  scroll-behavior: smooth;
+  scroll-padding-block: 100%;
+}
+
+.sendedMsg {
+  width: max-content;
+  max-width: 60vw;
+  border-radius: 15px;
+  border-bottom-right-radius: 0;
+  margin: 20px;
+  padding: 10px;
+  font-size: 15px;
+  word-wrap: break-word;
+  font-family: sans-serif;
+  color: crimson;
+  background-color: white;
+}
+
+.msgInbox img {
+  width: clamp(120px, 50vw, 250px);
+
+}
+
+
+
+.msgFieldDiv {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.fieldAndImageSelectBtnConatiner {
+  width: 80%;
+  margin: 0 10px;
+  position: relative;
+}
+
+.msgField {
+  width: 100%;
+  height: clamp(40px, 10vw, 50px);
+  border-radius: 10px;
+  padding-left: 10px;
+  color: crimson;
+  border: 3px hwb(348 8% 14%) solid;
+  outline: none;
+  font-size: 20px;
+  background-color: transparent;
+}
+
+.msgField::placeholder {
+  color: rgba(220, 20, 60, 0.807);
+  font-size: 14px;
+}
+
+.imageSelectBtn {
+  position: absolute;
+  right: 7px;
+  top: 1.5px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: crimson;
+  font-size: 40px;
+}
+
+.imageSelectBtn:hover {
+  cursor: pointer;
+  color: rgba(220, 20, 60, 0.817);
+}
+
+.btn {
+  width: 150px;
+  height: clamp(40px, 10vw, 50px);
+  background-color: crimson;
+  font-size: 20px;
+  font-weight: 900;
+  border: none;
+  border-radius: 10px;
+  font-family: cursive;
+  margin: 0 10px;
+}
+
+.btn:hover {
+  background-color: rgba(220, 20, 60, 0.898);
+  cursor: pointer;
+}
