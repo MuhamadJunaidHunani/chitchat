@@ -63,10 +63,10 @@
         </form>
         <div class="usersNavContainer">
             <div class="navBar">
-                <h3>Chat with,</h3> <div
-                    class="openNavbtn" onclick="openNav()"></div>
+                <h3>Chat with,</h3>
+                <div class="openNavbtn" onclick="openNav()"></div>
             </div>
-            <div id="mySidebar" class="sidebar">
+            <div class="sidebar">
                 <button class="closeNavbtn" onclick="closeNav()">×</button>
                 <div class="userInfoContainer">
                     <div class="userDpContainer">
@@ -75,8 +75,19 @@
                             <input type="file" class="dpSelectFile" style="display: none;" accept="image/*">
                         </div>
                     </div>
+                    <div class="userNameEmailContainer">
+                        <h3 class="nameHd">UserName:</h3>
+                        <h2 class="userName"></h2>
+                        <h3 class="nameHd">Email:</h3>
+                        <h2 class="userEmail"></h2>
+                        <hr />
+                    </div>
+                    <div class="signoutLoguotContainer">
+                        <h3 class="logoutBtn">Logout <i class="fa-solid fa-arrow-right-from-bracket fa-xs"></i></h3>
+                        <h3 class="signoutBtn">Delete Account <i class="fa-solid fa-trash fa-xs"></i></h3>
+                    </div>
                 </div>
-              </div>
+            </div>
             <div class="usersContainer">
             </div>
         </div>

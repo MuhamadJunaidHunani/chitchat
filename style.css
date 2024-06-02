@@ -170,7 +170,10 @@ form input[type="date"]::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #EFEAE2;
+  background-image: url(./img/person.jpg);
+  background-position: center;
+  background-size: cover;
+  /* background-color: #EFEAE2; */
 }
 
 .sidebar {
@@ -190,6 +193,13 @@ form input[type="date"]::-webkit-calendar-picker-indicator {
   padding-left: 10px;
   background-color: transparent;
   font-size: 40px;
+}
+
+.userInfoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
 }
 
 .userDpContainer {
@@ -221,6 +231,33 @@ form input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
+.userNameEmailContainer {
+  padding: 10px
+}
+
+.nameHd {
+  color: crimson;
+  font-size: 15PX;
+}
+
+.userName,
+.userEmail {
+  padding: 10px;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.signoutLoguotContainer {
+  padding: 20px 0;
+}
+
+.signoutBtn,
+.logoutBtn {
+  color: red;
+  font-weight: 400;
+  padding: 2px 20px;
+}
+
 .navBar {
   display: flex;
   justify-content: space-between;
@@ -229,6 +266,7 @@ form input[type="date"]::-webkit-calendar-picker-indicator {
   height: 8vh;
   background-color: rgb(231, 55, 90);
   margin-bottom: 1vh;
+  font-family: sans-serif;
 }
 
 .navBar h3,
@@ -297,6 +335,12 @@ form input[type="date"]::-webkit-calendar-picker-indicator {
   font-family: sans-serif;
   color: crimson;
   background-color: white;
+}
+
+.msgSndTime {
+  color: gray;
+  font-size: 10px;
+  text-align: right;
 }
 
 .msgInbox img {

@@ -34,8 +34,10 @@ function loader(toDisplay) {
   setTimeout(function () {
     document.querySelector(".loaderContainer").style.display = "none";
     document.querySelector(toDisplay).style.display = "block"
-  }, 100);
+  }, 1500);
 };
+
+
 
 window.onload = loader(".signUpForm");
 
@@ -46,6 +48,7 @@ var usersContainer = document.querySelector(".usersContainer");
 var inboxContainer = document.querySelector(".msgInbox");
 var messengerContainer = document.querySelector(".messengerContainer");
 var imageInput = document.querySelector(".imageInput");
+var closeNavBtn = document.querySelector(".closeNavbtn");
 var userDp = document.querySelector(".userDp");
 var currentUser = false;
 var userToChat;
@@ -82,11 +85,10 @@ signUpForm.addEventListener("submit", function (event) {
         dpPath: "./img/person.jpg"
       })
       currentUser = users[users.length - 1];
-      userDp.style.backgroundImage = `url(${currentUser.dpPath})`;
       localStorage.setItem("user", JSON.stringify(users));
       signUpForm.style.display = "none";
       loader(".usersNavContainer");
-      usersContainer.innerHTML = "";
+      toPrintInfo()
       for (var j = 0; j < users.length; j++) {
         if (users[j].email !== currentUser.email) {
           var userToChat = document.createElement("div");
@@ -107,13 +109,12 @@ loginForm.addEventListener("submit", function (event) {
     if (loginData.get("email") === users[k].email && loginData.get("password") === users[k].password) {
       userFound = true;
       currentUser = users[k];
-      userDp.style.backgroundImage = `url(${currentUser.dpPath})`;
     }
   }
   if (userFound) {
     loginForm.style.display = "none";
     loader(".usersNavContainer");
-    usersContainer.innerHTML = "";
+    toPrintInfo()
     for (var j = 0; j < users.length; j++) {
       if (users[j].email !== currentUser.email) {
         userToChat = document.createElement("div");
@@ -124,10 +125,16 @@ loginForm.addEventListener("submit", function (event) {
     }
   }
   else {
-
     alertFunction("Email or password incorrect!")
   }
 })
+
+function toPrintInfo() {
+  document.querySelector(".userName").innerHTML = `${currentUser.fName} ${currentUser.lName}`;
+  document.querySelector(".userEmail").innerHTML = currentUser.email;
+  userDp.style.backgroundImage = `url(${currentUser.dpPath})`;
+  usersContainer.innerHTML = "";
+}
 
 document.querySelector(".loginLink").addEventListener("click", function () {
   signUpForm.style.display = "none";
@@ -140,12 +147,12 @@ document.querySelector(".signUpLink").addEventListener("click", function () {
 })
 
 function openNav() {
-  document.getElementById("mySidebar").style.width = "280px";
+  document.querySelector(".sidebar").style.width = "280px";
 
 }
 
 function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
+  document.querySelector(".sidebar").style.width = "0";
 }
 
 document.querySelector(".changeDpIcon").addEventListener("click", function () {
@@ -155,15 +162,28 @@ document.querySelector(".changeDpIcon").addEventListener("click", function () {
     var changeDpPath = dpInput.files[0];
     if (changeDpPath) {
       var changeDpPath = URL.createObjectURL(changeDpPath);
-      var currentUserIndex = users.findIndex(function (user) {
-        return user.email === currentUser.email;
-      });
-      console.log(currentUserIndex)
-      users[currentUserIndex].dpPath = changeDpPath;
-      localStorage.setItem("user", JSON.stringify(users));
       userDp.style.backgroundImage = `url(${changeDpPath})`;
     }
   })
+})
+
+document.querySelector(".logoutBtn").addEventListener("click", function () {
+  loader(".loginForm");
+  usersNavContainer.style.display = "none";
+  currentUser = false
+  closeNavBtn.click()
+})
+
+document.querySelector(".signoutBtn").addEventListener("click", function () {
+  if (confirm("you really want to delete account?")) {
+    var currentUserIndex = users.findIndex(function (user) {
+      return user.email === currentUser.email;
+    });
+    users.splice(currentUserIndex, 1);
+    localStorage.setItem("user", JSON.stringify(users));
+    usersNavContainer.style.display = "none";
+    loader(".signUpForm");
+  }
 })
 
 document.querySelector("#backIcon").addEventListener("click", function () {
@@ -204,7 +224,18 @@ document.querySelector(".sndBtn").addEventListener("click", function () {
       var sendedMsg = document.createElement("div");
       sendedMsg.classList.add("sendedMsg");
       sendedMsg.textContent = msgToSend;
+      var monthsName = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+      var getTime = new Date;
+      var hour = getTime.getHours();
+      var minute = getTime.getMinutes();
+      var month = monthsName[getTime.getMonth()];
+      var date = getTime.getDate();
+      var msgSndTime = `${date} ${month}, ${hour}:${minute}`;
+      var msgSndTimeContainer = document.createElement("p");
+      msgSndTimeContainer.classList.add("msgSndTime");
+      msgSndTimeContainer.innerText = msgSndTime;
       inboxContainer.appendChild(sendedMsg);
+      sendedMsg.appendChild(msgSndTimeContainer);
       scrollToBottom()
       alertFunction("message has been sent");
       document.querySelector(".msgField").value = "";
